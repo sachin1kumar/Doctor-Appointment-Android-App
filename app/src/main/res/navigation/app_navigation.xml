@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.doctor.doctorsappointment.walkthrough.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_doctorRegistrationFragment"
+            app:destination="@id/doctorRegistrationFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.doctor.doctorsappointment.walkthrough.WalkThroughFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_doctorRegistrationFragment"
+            app:destination="@id/doctorRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.doctor.doctorsappointment.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorRegistrationFragment"
+        android:name="com.doctor.doctorsappointment.doctorregistration.view.DoctorRegistrationFragment"
+        android:label="DoctorRegistrationFragment" >
+        <action
+            android:id="@+id/action_doctorRegistrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/homeScreen"
+        android:name="com.doctor.doctorsappointment.home.HomeScreen"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+</navigation>

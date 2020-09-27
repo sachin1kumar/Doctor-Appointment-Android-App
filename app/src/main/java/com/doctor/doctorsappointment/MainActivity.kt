@@ -9,20 +9,22 @@ import com.doctor.doctorsappointment.viewmodel.MyViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var adviceText: TextView
+    //lateinit var adviceText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adviceText = findViewById(R.id.count)
+        //adviceText = findViewById(R.id.count)
+
+        supportActionBar?.hide()
 
         val viewModel = ViewModelProviders.of(this)
             .get(MyViewModel::class.java)
 
         (viewModel).getTotalReceivedCount().observe(this,
             Observer {
-                adviceText.text = "Total Received Appointments: $it"
+                //adviceText.text = "Total Received Appointments: $it"
             })
     }
 }

@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Doctor\'s Appointment</string>
     <string name="loading">Loading..</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_registration">Doctor\'s Registration</string>
+    <string name="doctor_s_name">Doctor\'s Name</string>
+    <string name="text_clinic_name">Clinic Name</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email address</string>
+    <string name="timing">timing</string>
+    <string name="fees">Fees</string>
+    <string name="address">Address</string>
+    <string name="name">Name</string>
 </resources>

@@ -23,10 +23,10 @@ class MyViewModel : ViewModel() {
         val service = ApiClient.retrofitClient()
 
         uiScope.launch {
-            val bookAppointment = BookAppointment("21-02-2020", BigInteger.valueOf(18))
+            /*val bookAppointment = BookAppointment("21-02-2020", BigInteger.valueOf(18))
             val strAdvice = service.getTotalAppointments(bookAppointment)
             val response = strAdvice.await()
-            totalCount.value = response.body()?.totalRecResponse.toString()
+            totalCount.value = response.body()?.totalRecResponse.toString()*/
         }
         return totalCount
     }

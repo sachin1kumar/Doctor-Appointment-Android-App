@@ -13,6 +13,7 @@ import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
 import com.doctor.doctorsappointment.utils.Constants
+import com.mindorks.example.coroutines.utils.Status
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
 import java.math.BigInteger
@@ -97,14 +98,26 @@ class DoctorRegistrationFragment : Fragment() {
     private fun sendDetailsToNetwork(doctorDetails: DoctorDetails) {
         val viewModel = ViewModelProviders.of(this)
             .get(DoctorRegistrationViewModel::class.java)
-        (viewModel).validateAndRegisterDoctor(doctorDetails).observe(this,
+        (viewModel).getDoctorId().observe(this,
             Observer {
-                if (it.equals(Constants.DOCTOR_REGISTRATION_FAILED)) {
-                    showToast("Registration failed")
-                } else {
-                    launchHomeScreen(it)
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        progressBar.visibility = View.GONE
+                        it.data?.let { doctorId -> launchHomeScreen(doctorId) }
+                    }
+                    Status.LOADING -> {
+                        progressBar.visibility = View.VISIBLE
+                    }
+                    Status.ERROR -> {
+                        //Handle Error
+                        progressBar.visibility = View.GONE
+                        it.data?.let { doctorId -> showToast(doctorId) }
+                    }
                 }
+
             })
+
+        viewModel.validateAndRegisterDoctor(doctorDetails)
     }
 
     private fun launchHomeScreen(doctorId: String) {

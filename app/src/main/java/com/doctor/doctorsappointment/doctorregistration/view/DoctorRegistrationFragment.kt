@@ -13,6 +13,7 @@ import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
 import com.doctor.doctorsappointment.utils.Constants
+import com.doctor.doctorsappointment.utils.CustomProgress
 import com.mindorks.example.coroutines.utils.Status
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
@@ -96,21 +97,21 @@ class DoctorRegistrationFragment : Fragment() {
     }
 
     private fun sendDetailsToNetwork(doctorDetails: DoctorDetails) {
+        val customProgress = CustomProgress()
         val viewModel = ViewModelProviders.of(this)
             .get(DoctorRegistrationViewModel::class.java)
         (viewModel).getDoctorId().observe(this,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        progressBar.visibility = View.GONE
+                        customProgress.show(requireFragmentManager(), "")
                         it.data?.let { doctorId -> launchHomeScreen(doctorId) }
                     }
                     Status.LOADING -> {
-                        progressBar.visibility = View.VISIBLE
+                        customProgress.show(requireFragmentManager(), "")
                     }
                     Status.ERROR -> {
-                        //Handle Error
-                        progressBar.visibility = View.GONE
+                        customProgress.dismiss()
                         it.data?.let { doctorId -> showToast(doctorId) }
                     }
                 }

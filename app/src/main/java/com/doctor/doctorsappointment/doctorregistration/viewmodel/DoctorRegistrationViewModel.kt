@@ -14,30 +14,28 @@ import kotlinx.coroutines.launch
 
 class DoctorRegistrationViewModel : ViewModel() {
 
-    lateinit var doctorId: MutableLiveData<Resource<String>>
+    private var doctorId = MutableLiveData<Resource<String>>()
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     fun validateAndRegisterDoctor(doctorDetails: DoctorDetails) {
-        doctorId = MutableLiveData()
         val service = DoctorRegistrationApiClient.retrofitClient()
         try {
             uiScope.launch {
                 doctorId.postValue(Resource.loading(null))
                 val strDoctorDetails = service.registerDoctorAsync(doctorDetails)
                 val response = strDoctorDetails.await()
-                doctorId.postValue(Resource.loading(response.body()?.doctorId.toString()))
+                doctorId.postValue(Resource.success(response.body()?.doctorId.toString()))
                 PreferenceManager.loggedInSuccessfully(true)
             }
         } catch (e: Exception) {
-            doctorId.postValue(Resource.loading("Registration Failed"))
+            doctorId.postValue(Resource.error("Registration Failed", null))
         }
     }
 
     fun getDoctorId() : LiveData<Resource<String>> {
         return doctorId
     }
-
 
     override fun onCleared() {
         super.onCleared()

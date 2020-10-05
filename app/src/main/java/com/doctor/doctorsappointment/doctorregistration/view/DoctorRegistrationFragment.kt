@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -31,6 +30,15 @@ class DoctorRegistrationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
         registerDoctor(view)
         return view
+    }
+
+    companion object {
+        fun newInstance(): DoctorRegistrationFragment {
+            val doctorRegistrationFragment = DoctorRegistrationFragment()
+            val args = Bundle()
+            doctorRegistrationFragment.arguments = args
+            return doctorRegistrationFragment
+        }
     }
 
     private fun registerDoctor(view: View) {

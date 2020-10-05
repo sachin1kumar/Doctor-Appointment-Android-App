@@ -6,6 +6,7 @@ import androidx.test.InstrumentationRegistry
 import com.doctor.doctorsappointment.MyTestRunner.startFragment
 import com.doctor.doctorsappointment.doctorregistration.view.DoctorRegistrationFragment
 import junit.framework.Assert.assertNotNull
+import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -39,5 +40,11 @@ class DoctorRegistrationFragTest {
         val fragmentTransaction = fragmentManager?.beginTransaction()
         fragmentTransaction?.add(fragment, tagName)
         fragmentTransaction?.commit()
+    }
+
+    @After
+    fun tearDown() {
+        mainActivity = null
+        doctorRegistrationFragment = null
     }
 }

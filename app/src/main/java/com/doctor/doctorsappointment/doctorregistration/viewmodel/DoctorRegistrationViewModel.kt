@@ -1,10 +1,13 @@
 package com.doctor.doctorsappointment.doctorregistration.viewmodel
 
 import android.content.Context
+import android.os.Handler
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
+import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.network.DoctorRegistrationApiClient
 import com.doctor.doctorsappointment.utils.PreferenceManager
@@ -30,7 +33,6 @@ class DoctorRegistrationViewModel : ViewModel() {
                 val strDoctorDetails = service.registerDoctorAsync(doctorDetails)
                 val response = strDoctorDetails.await()
                 doctorId.postValue(Resource.success(response.body()?.doctorId.toString()))
-                PreferenceManager.loggedInSuccessfully(true)
             }
         } catch (e: Exception) {
             doctorId.postValue(Resource.error("Registration Failed", null))

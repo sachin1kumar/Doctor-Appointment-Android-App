@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_doctorRegistrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_doctorRegistrationFragment_to_homeScreen"
+            app:destination="@id/homeScreen" />
     </fragment>
     <activity
         android:id="@+id/homeScreen"

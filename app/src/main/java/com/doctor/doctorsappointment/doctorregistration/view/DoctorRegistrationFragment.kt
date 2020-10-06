@@ -1,6 +1,7 @@
 package com.doctor.doctorsappointment.doctorregistration.view
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
 import com.doctor.doctorsappointment.utils.Constants
 import com.doctor.doctorsappointment.utils.CustomProgress
+import com.doctor.doctorsappointment.utils.PreferenceManager
 import com.mindorks.example.coroutines.utils.Resource
 import com.mindorks.example.coroutines.utils.Status
 import kotlinx.android.synthetic.main.fragment_registration.view.*
@@ -115,6 +117,8 @@ class DoctorRegistrationFragment : Fragment() {
     }
 
     private fun launchHomeScreen(doctorId: String) {
+        PreferenceManager.loggedInSuccessfully(true)
+        Thread.sleep(5000)
         val bundle = Bundle()
         bundle.putString(Constants.DOCTOR_ID_KEY, doctorId)
         findNavController().navigate(R.id.homeScreen, bundle)

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/updateDoctorRegistration"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/update_details"/>
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/log_out"/>
+
+</menu>

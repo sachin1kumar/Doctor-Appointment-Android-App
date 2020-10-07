@@ -69,4 +69,7 @@ dependencies {
 
     def fragment_version = "1.2.5"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+
+    //Rounded image view..
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

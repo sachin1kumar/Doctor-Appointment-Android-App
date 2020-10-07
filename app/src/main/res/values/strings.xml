@@ -14,4 +14,8 @@
     <string name="name">Name</string>
     <string name="update_details">Update Details</string>
     <string name="log_out">Log Out</string>
+    <string name="doctor">Doctor</string>
+    <string name="text_designation">Sr. Consultant</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello Home fragment</string>
 </resources>

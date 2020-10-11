@@ -2,10 +2,12 @@ package com.doctor.doctorsappointment.doctorregistration.view
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -102,7 +104,7 @@ class DoctorRegistrationFragment : Fragment() {
                 when (it.status) {
                     Status.SUCCESS -> {
                         customProgress.show(requireFragmentManager(), "")
-                        it.data?.let { doctorId -> launchHomeScreen(doctorId) }
+                        it.data?.let { launchHomeScreen() }
                     }
                     Status.LOADING -> {
                         customProgress.show(requireFragmentManager(), "")
@@ -116,12 +118,10 @@ class DoctorRegistrationFragment : Fragment() {
         viewModel.validateAndRegisterDoctor(doctorDetails)
     }
 
-    private fun launchHomeScreen(doctorId: String) {
+    private fun launchHomeScreen() {
         PreferenceManager.loggedInSuccessfully(true)
-        Thread.sleep(5000)
-        val bundle = Bundle()
-        bundle.putString(Constants.DOCTOR_ID_KEY, doctorId)
-        findNavController().navigate(R.id.homeScreen, bundle)
+        //Thread.sleep(5000)
+        findNavController().navigate(R.id.homeScreen)
     }
 
     private fun initViewModel(): DoctorRegistrationViewModel {

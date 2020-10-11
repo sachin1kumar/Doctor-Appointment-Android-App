@@ -24,11 +24,22 @@ class PreferenceManager {
             val settings: SharedPreferences = MyApplication.instance.getSharedPreferences(DOCTOR_SHARED_PREF, MODE_PRIVATE)
             val editor: SharedPreferences.Editor = settings.edit()
             editor.putBoolean(Constants.IS_LOGGED_IN, isLoggedIn)
-            editor.apply()
+            editor.commit()
         }
 
         fun isLoggedIn() : Boolean {
             return MyApplication.instance.getSharedPreferences(DOCTOR_SHARED_PREF, MODE_PRIVATE).getBoolean(Constants.IS_LOGGED_IN, false)
+        }
+
+        fun saveDoctorId(doctorId: String) {
+            val settings: SharedPreferences = MyApplication.instance.getSharedPreferences(DOCTOR_SHARED_PREF, MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = settings.edit()
+            editor.putString(Constants.DOCTOR_ID_KEY, doctorId)
+            editor.commit()
+        }
+
+        fun getDoctorId() : String? {
+            return MyApplication.instance.getSharedPreferences(DOCTOR_SHARED_PREF, MODE_PRIVATE).getString(Constants.DOCTOR_ID_KEY, "")
         }
     }
 }

@@ -2,6 +2,7 @@ package com.doctor.doctorsappointment.doctorregistration.viewmodel
 
 import android.content.Context
 import android.os.Handler
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,11 +33,19 @@ class DoctorRegistrationViewModel : ViewModel() {
                 doctorId.postValue(Resource.loading(null))
                 val strDoctorDetails = service.registerDoctorAsync(doctorDetails)
                 val response = strDoctorDetails.await()
-                doctorId.postValue(Resource.success(response.body()?.doctorId.toString()))
+                //save doctor id to shared pref..
+                val strDocId = response.body()?.doctorId.toString()
+                saveDoctorIdToPref(strDocId)
+                //Thread.sleep(5000)
+                doctorId.postValue(Resource.success(strDocId))
             }
         } catch (e: Exception) {
             doctorId.postValue(Resource.error("Registration Failed", null))
         }
+    }
+
+    private fun saveDoctorIdToPref(strDocId: String) {
+        PreferenceManager.saveDoctorId(strDocId)
     }
 
     fun validateForEmptyDetails(doctorDetails: DoctorDetails) {

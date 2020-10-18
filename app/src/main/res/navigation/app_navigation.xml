@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_splashFragment_to_doctorRegistrationFragment"
             app:destination="@id/doctorRegistrationFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_homeScreen"
-            app:destination="@id/homeScreen" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -34,9 +31,6 @@
         android:name="com.doctor.doctorsappointment.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_homeScreen"
-            app:destination="@id/homeScreen" />
     </fragment>
     <fragment
         android:id="@+id/doctorRegistrationFragment"
@@ -45,13 +39,5 @@
         <action
             android:id="@+id/action_doctorRegistrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_doctorRegistrationFragment_to_homeScreen"
-            app:destination="@id/homeScreen" />
     </fragment>
-    <activity
-        android:id="@+id/homeScreen"
-        android:name="com.doctor.doctorsappointment.home.HomeScreen"
-        android:label="activity_home"
-        tools:layout="@layout/activity_home" />
 </navigation>

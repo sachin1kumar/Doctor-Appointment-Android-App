@@ -1,5 +1,6 @@
 package com.doctor.doctorsappointment.doctorregistration.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
+import com.doctor.doctorsappointment.home.HomeScreen
 import com.doctor.doctorsappointment.utils.Constants
 import com.doctor.doctorsappointment.utils.CustomProgress
 import com.doctor.doctorsappointment.utils.PreferenceManager
@@ -97,20 +99,20 @@ class DoctorRegistrationFragment : Fragment() {
     }
 
     private fun sendDetailsToNetwork(doctorDetails: DoctorDetails) {
-        val customProgress = CustomProgress()
+        val customProgress = CustomProgress(requireActivity())
         val viewModel = initViewModel()
         (viewModel).getDoctorId().observe(viewLifecycleOwner,
             Observer {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        customProgress.show(requireFragmentManager(), "")
+                        customProgress.dismissDialog()
                         it.data?.let { launchHomeScreen() }
                     }
                     Status.LOADING -> {
-                        customProgress.show(requireFragmentManager(), "")
+                        customProgress.startLoadingDialog()
                     }
                     Status.ERROR -> {
-                        customProgress.dismiss()
+                        customProgress.dismissDialog()
                         it.message?.let { message -> showToast(message) }
                     }
                 }
@@ -120,8 +122,9 @@ class DoctorRegistrationFragment : Fragment() {
 
     private fun launchHomeScreen() {
         PreferenceManager.loggedInSuccessfully(true)
-        //Thread.sleep(5000)
-        findNavController().navigate(R.id.homeScreen)
+        //launch home screen.
+        val intent = Intent(requireActivity(), HomeScreen::class.java)
+        startActivity(intent)
     }
 
     private fun initViewModel(): DoctorRegistrationViewModel {

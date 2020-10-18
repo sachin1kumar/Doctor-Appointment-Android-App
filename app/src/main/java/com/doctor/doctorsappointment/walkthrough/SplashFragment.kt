@@ -1,5 +1,6 @@
 package com.doctor.doctorsappointment.walkthrough
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.doctor.doctorsappointment.R
+import com.doctor.doctorsappointment.home.HomeScreen
 import com.doctor.doctorsappointment.utils.PreferenceManager
 
 class SplashFragment : Fragment() {
@@ -23,7 +25,9 @@ class SplashFragment : Fragment() {
             }, 5000)
         } else if (PreferenceManager.isLoggedIn()) {
             Handler().postDelayed({
-                findNavController().navigate(R.id.homeScreen)
+                //launch home screen.
+                val intent = Intent(requireActivity(), HomeScreen::class.java)
+                startActivity(intent)
             }, 5000)
         } else {
             Handler().postDelayed({

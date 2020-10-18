@@ -1,26 +1,26 @@
 package com.doctor.doctorsappointment.utils
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import android.app.Activity
+import androidx.appcompat.app.AlertDialog
 import com.doctor.doctorsappointment.R
-import com.wang.avi.AVLoadingIndicatorView
-import kotlinx.android.synthetic.main.pogress_bar.view.*
 
-class CustomProgress : DialogFragment() {
+class CustomProgress(activity: Activity) {
 
-    private var progress : AVLoadingIndicatorView? = null
+    private var activity: Activity? = activity
+    private var alertDialog: AlertDialog? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.pogress_bar, container, false)
-        progress = view.progress
-        return view
+    fun startLoadingDialog() {
+        val builder = activity?.let { AlertDialog.Builder(it) }
+        val inflater = activity?.layoutInflater
+        builder?.setView(inflater?.inflate(R.layout.pogress_bar, null))
+        builder?.setCancelable(false)
+
+        alertDialog = builder?.create()
+        alertDialog?.show()
+    }
+
+    fun dismissDialog() {
+        alertDialog?.cancel()
     }
 
 

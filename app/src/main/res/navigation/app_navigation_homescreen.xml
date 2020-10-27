@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.doctor.doctorsappointment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_updateRegistrationFragment"
+            app:destination="@id/updateDataRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateDataRegistrationFragment"
+        android:name="com.doctor.doctorsappointment.home.updateregistration.UpdateRegistrationFragment"
+        android:label="fragment_update_registration"
+        tools:layout="@layout/fragment_update_registration" />
 </navigation>

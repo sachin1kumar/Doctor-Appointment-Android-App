@@ -13,9 +13,11 @@
     <string name="address">Address</string>
     <string name="name">Name</string>
     <string name="update_details">Update Details</string>
+    <string name="text_home">Home</string>
     <string name="log_out">Log Out</string>
     <string name="doctor">Doctor</string>
     <string name="text_designation">Sr. Consultant</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello Home fragment</string>
+    <string name="hello_update_fragment">Hello Update Registration fragment</string>
 </resources>

@@ -2,22 +2,17 @@ package com.doctor.doctorsappointment.doctorregistration.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
-import com.doctor.doctorsappointment.home.HomeScreen
-import com.doctor.doctorsappointment.utils.Constants
+import com.doctor.doctorsappointment.home.HomeScreenActivity
 import com.doctor.doctorsappointment.utils.CustomProgress
 import com.doctor.doctorsappointment.utils.PreferenceManager
 import com.mindorks.example.coroutines.utils.Resource
@@ -123,7 +118,7 @@ class DoctorRegistrationFragment : Fragment() {
     private fun launchHomeScreen() {
         PreferenceManager.loggedInSuccessfully(true)
         //launch home screen.
-        val intent = Intent(requireActivity(), HomeScreen::class.java)
+        val intent = Intent(requireActivity(), HomeScreenActivity::class.java)
         startActivity(intent)
     }
 

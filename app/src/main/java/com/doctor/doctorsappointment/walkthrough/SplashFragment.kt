@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.doctor.doctorsappointment.R
-import com.doctor.doctorsappointment.home.HomeScreen
+import com.doctor.doctorsappointment.home.HomeScreenActivity
 import com.doctor.doctorsappointment.utils.PreferenceManager
 
 class SplashFragment : Fragment() {
@@ -26,7 +26,7 @@ class SplashFragment : Fragment() {
         } else if (PreferenceManager.isLoggedIn()) {
             Handler().postDelayed({
                 //launch home screen.
-                val intent = Intent(requireActivity(), HomeScreen::class.java)
+                val intent = Intent(requireActivity(), HomeScreenActivity::class.java)
                 startActivity(intent)
             }, 5000)
         } else {

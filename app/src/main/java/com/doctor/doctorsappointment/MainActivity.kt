@@ -1,5 +1,6 @@
 package com.doctor.doctorsappointment
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -11,9 +12,15 @@ class MainActivity : AppCompatActivity() {
 
     //lateinit var adviceText: TextView
 
+    companion object {
+        var mainActivity: MainActivity? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mainActivity = this
 
         //adviceText = findViewById(R.id.count)
 
@@ -26,5 +33,10 @@ class MainActivity : AppCompatActivity() {
             Observer {
                 //adviceText.text = "Total Received Appointments: $it"
             })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainActivity = null
     }
 }

@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.doctor.doctorsappointment.MainActivity
 import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.utils.PreferenceManager
 import com.google.android.material.navigation.NavigationView
@@ -38,6 +39,11 @@ class HomeScreenActivity : AppCompatActivity(),  NavigationView.OnNavigationItem
     private fun getDoctorIdFromPref() {
         val doctorId = PreferenceManager.getDoctorId()
         Log.e("Bundle", "adocId:$doctorId")
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        MainActivity.mainActivity?.finish()
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {

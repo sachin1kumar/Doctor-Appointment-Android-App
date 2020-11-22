@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.doctor.doctorsappointment"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -75,4 +75,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     implementation "androidx.cardview:cardview:1.0.0"
+
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.0.0")
+    testImplementation("com.squareup.okhttp3:okhttp:4.0.0")
 }

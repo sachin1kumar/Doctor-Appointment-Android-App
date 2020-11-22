@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.doctor.doctorsappointment.R
 import com.doctor.doctorsappointment.doctorregistration.model.DoctorDetails
 import com.doctor.doctorsappointment.doctorregistration.viewmodel.DoctorRegistrationViewModel
@@ -30,6 +31,7 @@ class DoctorRegistrationFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
         registerDoctor(view)
+        validateRegisterUser(view)
         return view
     }
 
@@ -64,6 +66,12 @@ class DoctorRegistrationFragment : Fragment() {
                 password
             )
             checkEmptyFieldsPresent(doctorDetails)
+        }
+    }
+
+    private fun validateRegisterUser(view: View) {
+        view.btn_login.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 
